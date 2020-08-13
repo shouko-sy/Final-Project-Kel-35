@@ -1,0 +1,9 @@
+.show-detail{
+    margin-top: 20px;
+    padding-top: 20px;
+    border: solid;
+    border-bottom: black;
+    border-left: black;
+    border-right: black;
+    border-width: 1px;
+}
