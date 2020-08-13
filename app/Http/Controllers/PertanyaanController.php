@@ -8,6 +8,9 @@ use Auth;
 
 class PertanyaanController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'delete']);
+    }
     public function create(){
     	return view('pertanyaan.create');
     }
@@ -21,7 +24,7 @@ class PertanyaanController extends Controller
         $question = Question::create([
             "judul" => $request["judul"],
             "isi" => $request["isi"],
-            "profil_id" => Auth::id()
+            "user_id" => Auth::id()
         ]);
 
     	return redirect('/pertanyaan')->with('success', 'Question Saved!');

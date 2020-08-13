@@ -17,8 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('judul', 45);
             $table->string('isi', 255);
-            $table->unsignedBigInteger('profil_id');
-            $table->foreign('profil_id')->references('id')->on('profils');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
