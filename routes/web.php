@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('/template/master');
 });
+
+Route::resource('/pertanyaan', 'PertanyaanController');
+Auth::routes();
