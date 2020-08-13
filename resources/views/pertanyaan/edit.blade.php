@@ -4,7 +4,7 @@
 	<div class="pt-4 pl-4 pr-4">
 		<div class="card card-primary">
 			<div class="card-header">
-				<h3 class="card-title">Edit Question {{$question->id}}</h3>
+				<h3 class="card-title">Edit Pertanyaan {{$question->id}}</h3>
 			</div>
 	              <!-- /.card-header -->
 	              <!-- form start -->
@@ -30,7 +30,7 @@
 	            </div>
 				<!-- /.card-body -->
 				<div class="card-footer">
-					<button type="submit" class="btn btn-primary">Update</button>
+					<button type="submit" class="btn btn-primary">Pebarui</button>
 				</div>
 			</form>
 	     </div>
