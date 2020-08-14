@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
-use App\Tag;    
+use App\Tag; 
+use App\Question_tag;  
 use Auth;
+use DB;
 
 class PertanyaanController extends Controller
 {
@@ -57,7 +59,15 @@ class PertanyaanController extends Controller
     		"judul" => 'required|unique:questions',
     		"isi" => 'required'
     	]);
-
+        
+        // $question_tag = Question_tag::where('question_id',$pertanyaan_id);
+        // dd($question_tag);
+        // $id_tags=[];
+        // foreach ($question_tag as $id_tag) {
+        //     $tag = Tag::firstOrCreate(['id' => $id_tag]);
+        //     $id_tags[] = $tag->id;
+        // }
+        // dd($id_tags);
         //mengupdate data tertentu menggunakan model mass update
         $update = Question::where("id", "$pertanyaan_id")->update([
             "judul" => $request["judul"],
@@ -74,6 +84,7 @@ class PertanyaanController extends Controller
         // menghapus data tertentu menggunakan model
         $question = Question::find($pertanyaan_id);
         $question->delete();
+       
 
         return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
     }
