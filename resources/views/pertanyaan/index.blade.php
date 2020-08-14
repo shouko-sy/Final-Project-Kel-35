@@ -30,8 +30,8 @@
                     		<td> {{$questions->judul}} </td>
                     		<td> {{$questions->isi}} </td>
                     		<td style="display: flex;"> 
-                    			<a href="{{ route('pertanyaan.show', ['pertanyaan' => $questions->id]) }}" class="btn btn-info btn-sm">Show</a>
-                    			<a href="{{ route('pertanyaan.edit', ['pertanyaan' => $questions->id]) }}" class="btn btn-default btn-sm">Edit</a>
+                    			<a href="{{ route('pertanyaan.show', ['pertanyaan' => $questions->id]) }}" class="btn btn-info btn-sm">Lihat</a>
+                    			<a href="{{ route('pertanyaan.edit', ['pertanyaan' => $questions->id]) }}" class="btn btn-default btn-sm">Ubah</a>
                     			<form action="{{ route('pertanyaan.destroy', ['pertanyaan' => $questions->id]) }}" method="POST">
                                     <input type="submit" value="Delete" name="_method" class="btn btn-danger btn-sm">
                                     {{ csrf_field() }}
