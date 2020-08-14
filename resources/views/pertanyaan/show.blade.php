@@ -19,7 +19,8 @@
             <div class="card-body no-padding">
                 <div class="mailcard-read-info">
                     <h3>{{ $question->judul }}</h3>
-                    <h5>From: help@example.com<br>
+                    <h5>Author : {{ $question->profil->name }}<br>
+                    <h5>email : {{ $question->profil->email }}</h5>
                     <span class="mailbox-read-time pull-right">Dibuat pada {{ $question->created_at }}</span></h5>
                 </div>
                 <!-- /.mailbox-read-info -->
