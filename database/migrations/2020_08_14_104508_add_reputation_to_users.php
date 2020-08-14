@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdOnProfils extends Migration
+class AddReputationToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddUserIdOnProfils extends Migration
      */
     public function up()
     {
-        Schema::table('profils', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('reputation')->default(0);
         });
     }
 
@@ -26,6 +25,9 @@ class AddUserIdOnProfils extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['reputation']);
+            $table->dropColumn(['reputation']);
+        });
     }
 }

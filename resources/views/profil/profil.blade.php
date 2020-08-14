@@ -20,35 +20,24 @@
                     <!-- /.box-header -->
             <div class="box-body no-padding" style="">
                 <ul class="users-list clearfix">
-                    @forelse($questions as $key => $questions)
+                    @forelse($profil as $key => $profil)
                     <li>
-                        <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                        <a class="users-list-name" href="#">Alexander Pierce</a>
-                        <span class="users-list-date">Today</span>
+                        <img src="{{asset('template/dist/img/user1-128x128.jpg')}}" alt="User Image">
+                        <a class="users-list-name" href="#">{{ $profil->name}}</a>
+                        <span class="users-list-date">{{date('d M Y', strtotime($profil->created_at)) }}</span>
+                        <span class="users-list-date">{{$profil->reputation}}</span>
                     </li>
-                    	<!-- <tr>
-                    		<td> {{$key+1}} </td>
-                    		<td> {{$questions->judul}} </td>
-                    		<td> {{$questions->isi}} </td>
-                    		<td style="display: flex;"> 
-                    			<a href="{{ route('pertanyaan.show', ['pertanyaan' => $questions->id]) }}" class="btn btn-info btn-sm">Lihat</a>
-                    			<a href="{{ route('pertanyaan.edit', ['pertanyaan' => $questions->id]) }}" class="btn btn-default btn-sm">Ubah</a>
-                    			<form action="{{ route('pertanyaan.destroy', ['pertanyaan' => $questions->id]) }}" method="POST">
-                                    <input type="submit" value="Delete" name="_method" class="btn btn-danger btn-sm">
-                                    {{ csrf_field() }}
-                                </form>
-                    		</td>
-                    	</tr> -->
+                    	
                     	@empty
                     	 <tr>
                     	 	<td colspan="4" align="center">No Question</td>
                     	 </tr>
                     @endforelse
-                    <li>
+                    <!-- <li>
                         <img src="dist/img/user1-128x128.jpg" alt="User Image">
                         <a class="users-list-name" href="#">Alexander Pierce</a>
                         <span class="users-list-date">Today</span>
-                    </li>
+                    </li> -->
                     <!-- <li>
                         <img src="dist/img/user8-128x128.jpg" alt="User Image">
                         <a class="users-list-name" href="#">Norman</a>
