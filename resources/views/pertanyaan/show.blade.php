@@ -20,7 +20,7 @@
                 <div class="mailcard-read-info">
                     <h3>{{ $question->judul }}</h3>
                     <h5>From: help@example.com<br>
-                    <span class="mailbox-read-time pull-right">15 Feb. 2016 11:03 PM</span></h5>
+                    <span class="mailbox-read-time pull-right">Dibuat pada {{ $question->created_at }}</span></h5>
                 </div>
                 <!-- /.mailbox-read-info -->
     

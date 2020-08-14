@@ -58,9 +58,10 @@ class PertanyaanController extends Controller
        	return redirect('/pertanyaan')->with('success', 'Success Update Question!');
     }
     public function destroy($pertanyaan_id){
-        //menghapus data tertentu menggunakan model
-        Question::destroy($pertanyaan_id);
+        // menghapus data tertentu menggunakan model
+        $question = Question::find($pertanyaan_id);
+        $question->delete();
 
-    	return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
+        return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
     }
 }

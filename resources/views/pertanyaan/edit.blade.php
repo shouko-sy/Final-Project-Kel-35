@@ -21,7 +21,8 @@
 	              	</div>
 	               	<div class="form-group">
 	                  	<label for="isi">Isi</label>
-	                   	<input type="text" class="form-control" id="isi" name="isi" value="{{ old('isi', $question->isi) }}" placeholder="masukkan isi">
+						<textarea  class="form-control" id="isi" name="isi" rows="4" cols="50">{{old('isi', $question->isi)}}</textarea>
+	                   	<!-- <input type="text" class="form-control" id="isi" name="isi" value="{{ old('isi', $question->isi) }}" placeholder="masukkan isi"> -->
 	                   	@error("isi")
 	                   		<div class="alert alert-danger"> {{$message}} </div>
 	                   	@enderror

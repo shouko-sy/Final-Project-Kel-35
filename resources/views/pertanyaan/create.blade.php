@@ -20,7 +20,7 @@
 	              	</div>
 	               	<div class="form-group">
 	                  	<label for="isi">Isi</label>
-						<textarea  class="form-control" id="isi" name="isi" rows="4" cols="50">{{old('isi', '')}}</textarea>
+						<textarea  class="form-control" id="isi" name="isi" rows="4" cols="50">{{{old('isi', '')}}}</textarea>
 	                   	<!-- <input type="text" class="form-control" id="isi" name="isi" value="{{old('isi', '')}}" placeholder="masukkan isi"> -->
 	                   	@error("isi")
 	                   		<div class="alert alert-danger"> {{$message}} </div>

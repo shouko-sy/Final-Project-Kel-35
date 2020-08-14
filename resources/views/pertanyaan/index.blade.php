@@ -32,10 +32,10 @@
                     		<td style="display: flex;"> 
                     			<a href="{{ route('pertanyaan.show', ['pertanyaan' => $questions->id]) }}" class="btn btn-info btn-sm">Show</a>
                     			<a href="{{ route('pertanyaan.edit', ['pertanyaan' => $questions->id]) }}" class="btn btn-default btn-sm">Edit</a>
-                    			<form action="{{ route('pertanyaan.destroy', ['pertanyaan' => $questions->id]) }}">
-                    				@method('DELETE')
-                    				<input type="submit" value="delete" class="btn btn-danger btn-sm">
-                    			</form>
+                    			<form action="{{ route('pertanyaan.destroy', ['pertanyaan' => $questions->id]) }}" method="POST">
+                                    <input type="submit" value="Delete" name="_method" class="btn btn-danger btn-sm">
+                                    {{ csrf_field() }}
+                                </form>
                     		</td>
                     	</tr>
                     	@empty
