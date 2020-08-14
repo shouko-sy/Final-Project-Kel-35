@@ -26,6 +26,13 @@
 	                   		<div class="alert alert-danger"> {{$message}} </div>
 	                   	@enderror
 	               	</div>
+	               	<div class="form-group">
+	                   	<label for="tags">Tag</label>
+	                   	<input type="text" class="form-control" id="tags" name="tags" value="{{old('tags', '')}}" placeholder="pisahkan tags dengan koma">
+	                   	@error("tag")
+	                   		<div class="alert alert-danger"> {{$message}} </div>
+	                   	@enderror
+	              	</div>
 	            </div>
 	            </div>
 				<!-- /.card-body -->

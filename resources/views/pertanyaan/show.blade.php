@@ -31,5 +31,13 @@
                 <!-- /.mailbox-read-message -->
                 </div>
             </div>
+            <div>
+               Tags : 
+                @forelse($question->tags as $tag)
+                    <button class="btn btn-primary btn-sm"> {{ $tag->tag_name }}</button>
+                    @empty
+                    No Tags
+                @endforelse
+            </div>
         </div>
 @endsection

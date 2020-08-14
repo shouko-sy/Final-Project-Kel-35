@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Tag;    
 use Auth;
 
 class PertanyaanController extends Controller
@@ -20,12 +21,20 @@ class PertanyaanController extends Controller
     		"isi" => 'required'
     	]);
 
+        $tags_arr = explode(',', $request["tags"]);
+
+        $tags_ids = [];
+        foreach ($tags_arr as $tag_name) {
+            $tag = Tag::firstOrCreate(['tag_name' => $tag_name]);
+            $tag_ids[] = $tag->id;
+        }
         //insert menggunakan model mass assignment
         $question = Question::create([
             "judul" => $request["judul"],
             "isi" => $request["isi"],
             "user_id" => Auth::id()
         ]);
+        $question->tags()->sync($tag_ids);
 
     	return redirect('/pertanyaan')->with('success', 'Question Saved!');
     }
@@ -53,7 +62,11 @@ class PertanyaanController extends Controller
         $update = Question::where("id", "$pertanyaan_id")->update([
             "judul" => $request["judul"],
             "isi" => $request["isi"]
-        ]); 
+        ]);
+
+        $update = Tag::where("id", "$pertanyaan_id")->update([
+            "tag_name" => $request["tag_name"]
+        ]);
 
        	return redirect('/pertanyaan')->with('success', 'Success Update Question!');
     }
