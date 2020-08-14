@@ -9,7 +9,7 @@ class Question extends Model
     protected $table = "questions";
     protected $guarded = [];
 
-    public function profil(){
+    public function namaUser(){
     	return $this->belongsTo('App\User', 'user_id');
     }
     public function tags(){
