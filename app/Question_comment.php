@@ -12,4 +12,8 @@ class Question_comment extends Model
     public function question(){
     	return $this->belongsTo('App\Question', 'question_id');
     }
+
+    public function user(){
+    	return $this->belongsTo('App\User', 'user_id');
+    }
 }

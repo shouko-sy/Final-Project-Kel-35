@@ -9,8 +9,9 @@
                 <div class="card-header with-border">
                     <h3 class="card-title">Pertanyaan</h3>
                     <div class="card-tools pull-right">
-                        <button class="btn btn-primary btn-sm">Up Vote</button>
-                        <button class="btn btn-primary btn-sm">Down Vote</button>
+                        <span>{{ $question->score }}</span>
+                        <button class="btn btn-primary btn-sm" onClick="">Up Vote</button>
+                        <button class="btn btn-primary btn-sm" onClick="">Down Vote</button>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -41,7 +42,7 @@
                             <tr>
                                 <td> 
                                     {{$komentar->isi}} <br> 
-                                    <h9 class="float-right"> dikomentar oleh : {{ $question->namaUser->name }} <br> </h9>
+                                    <h9 class="float-right"> dikomentar oleh : {{ $komentar->user->name }} <br> </h9>
                                 </td>
                             </tr>
                             @empty
@@ -52,7 +53,7 @@
                         </tbody>
                         </table>
                     </div>
-                    <form action="/pertanyaan/{{$question->id}}" method="POST">
+                    <form action="/pertanyaan/{{$question->id}}/komentar" method="POST">
                         @csrf
                         <div class="form-group mt-3 ml-5">
                             <textarea  class="form-control" id="komentar" name="komentar" rows="2" cols="50" placeholder="masukan komentar anda ...">{{{old('komentar', '')}}}</textarea>
@@ -68,7 +69,7 @@
             </div>
 
             <div class="card card-primary">
-                <form role="form" action="/pertanyaan/{{$question->id}}" method="POST">
+                <form role="form" action="/pertanyaan/{{$question->id}}/jawaban" method="POST">
                 @csrf
                     <div class="form-group m-2">
                         <textarea  class="form-control" name="jawaban" rows="2" cols="50" placeholder="masukan jawaban anda ..."></textarea>
