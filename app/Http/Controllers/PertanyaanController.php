@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Tag; 
-use App\Question_tag;
+use App\Question_tag;  
+use App\Answer;
+use App\Question_comment;
 use Auth;
-use DB;
+
 
 class PertanyaanController extends Controller
 {
@@ -22,7 +24,7 @@ class PertanyaanController extends Controller
     		"judul" => 'required|unique:questions',
     		"isi" => 'required'
     	]);
-
+        // dd($request);
         $tags_arr = explode(',', $request["tags"]);
 
         $tags_ids = [];
@@ -47,7 +49,10 @@ class PertanyaanController extends Controller
     }
     public function show($pertanyaan_id){
         $question = Question::find($pertanyaan_id);
-    	return view('pertanyaan.show', compact('question'));
+        $answer = Answer::all()->where('question_id', $pertanyaan_id);
+        $komentar = Question_comment::all()->where('question_id', $pertanyaan_id);
+        // dd($answer);
+    	return view('pertanyaan.show', compact('question', 'answer', 'komentar'));
     }
     public function edit($pertanyaan_id){
         //mengedit data tertentu menggunakan model

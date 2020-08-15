@@ -15,7 +15,7 @@ class CreateQuestionsCommentsTable extends Migration
     {
         Schema::create('questions_comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('isi');
+            $table->string('isi')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions');

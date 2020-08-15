@@ -7,7 +7,7 @@
                     <h3 class="card-title">Pertanyaan</h3>
 
                     <div class="card-tools pull-right">
-                        <a href="#" class="btn btn-card-tool">Kembali</a>
+                        <a href="{{ route('pertanyaan.index') }}" class="btn btn-card-tool">Kembali</a>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -31,43 +31,72 @@
                         <h4>{{ $question->isi }}</h4>
                     </div>
                     <!-- /.mailbox-read-message -->
-                    <div class="card ml-5 mr-5 mt-5">
-                        <div class="card-body">
-                            <table class="table table-bordered">
-                            <tbody>
-                            @forelse($komentar as $key => $komentar)
-                                <tr>
-                                    <td> 
-                                        {{$komentar->isi}} <br> 
-                                        <h9 class="float-right"> dikomentar oleh : {{ $question->namaUser->name }} <br> </h9>
-                                    </td>
-                                </tr>
-                                @empty
-                                 <tr>
-                                    <td colspan="4" align="center">No Comment</td>
-                                 </tr>
-                            @endforelse
-                            </tbody>
-                            </table>
-                        </div>
+                    <div class="card-body ml-5 mt-5">
+                        <table class="table table-bordered">
+                        <tbody>
+                        @forelse($komentar as $key => $komentar)
+                            <tr>
+                                <td> 
+                                    {{$komentar->isi}} <br> 
+                                    <h9 class="float-right"> dikomentar oleh : {{ $question->namaUser->name }} <br> </h9>
+                                </td>
+                            </tr>
+                            @empty
+                             <tr>
+                                <td colspan="4" align="center">No Comment</td>
+                             </tr>
+                        @endforelse
+                        </tbody>
+                        </table>
                     </div>
                     <form action="/pertanyaan/{{$question->id}}" method="POST">
                         @csrf
-                        <div class="form-group mt-3 ml-5 mr-5">
+                        <div class="form-group mt-3 ml-5">
                             <textarea  class="form-control" id="komentar" name="komentar" rows="2" cols="50" placeholder="masukan komentar anda ...">{{{old('komentar', '')}}}</textarea>
                             @error("komentar")
                                 <div class="alert alert-danger"> {{$message}} </div>
                             @enderror
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary mr-5 float-right">Tambah Komentar</button>
+                            <button type="submit" class="btn btn-primary float-right">Tambah Komentar</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="card card-primary">
-                
-            </div>
 
+            <div class="card card-primary">
+                <form role="form" action="/pertanyaan/{{$question->id}}" method="POST">
+                @csrf
+                    <div class="form-group m-2">
+                        <textarea  class="form-control" name="jawaban" rows="2" cols="50" placeholder="masukan jawaban anda ..."></textarea>
+                        <!-- @error("")
+                            <div class="alert alert-danger"> {{$message}} </div>
+                        @enderror -->
+                    </div>
+                    <div class="form-group m-2">
+                        <button type="submit" class="btn btn-primary">Tambah Jawaban</button>
+                    </div>
+                </form>
+            </div>
+                    
+            @forelse($answer as $key => $answer)
+                <div class="card card-primary">
+                    <div class="card-body row">
+                        <h5 class="card-title">{{ $answer->isi }}</h5>
+                        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                    <div class="card-body row">
+                        <div class="ml-5">
+                            <h5 class="card-title">komentar!</h5>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                    	 <tr>
+                    	 	<td colspan="4" align="center">Tidak ada Komentar</td>
+                    	 </tr>
+            @endforelse
+            
         </div>
 @endsection
