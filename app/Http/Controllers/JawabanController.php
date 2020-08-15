@@ -11,16 +11,18 @@ class JawabanController extends Controller
 {
     public function addAnswer($pertanyaan_id, Request $request){
         // dd($request);
-        $jawaban = Answer::create([
+        $question = Question::find($pertanyaan_id);
+        $answer = Answer::create([
             "isi" => $request["jawaban"],
-            "question_id" => Auth::id(),
+            "question_id" => $question->id,
             "user_id" => Auth::id()
         ]);
-   
         
-        $question = Question::find($pertanyaan_id);
-        return view('pertanyaan.show', compact('question', 'request'));
+        $answer = Answer::all()->where('question_id', $pertanyaan_id);
+        // dd($answer);
+
+        return view('pertanyaan.show', compact('question', 'answer'));
         // return redirect('/pertanyaan/{{$question->id}}')->with('success', 'Question Saved!');
-        // return app('App\Http\Controllers\PertanyaanController')->show(1, $request['jawaban']);
+        // return app('App\Http\Controllers\PertanyaanController')->show($pertanyaan_id);
     }
 }

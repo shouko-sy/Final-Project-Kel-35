@@ -48,7 +48,9 @@ class PertanyaanController extends Controller
     }
     public function show($pertanyaan_id){
         $question = Question::find($pertanyaan_id);
-    	return view('pertanyaan.show', compact('question'));
+        $answer = Answer::all()->where('question_id', $pertanyaan_id);
+        // dd($answer);
+    	return view('pertanyaan.show', compact('question', 'answer'));
     }
     public function edit($pertanyaan_id){
         //mengedit data tertentu menggunakan model

@@ -7,7 +7,7 @@
                     <h3 class="card-title">Pertanyaan</h3>
 
                     <div class="card-tools pull-right">
-                        <a href="#" class="btn btn-card-tool">Kembali</a>
+                        <a href="{{ route('pertanyaan.index') }}" class="btn btn-card-tool">Kembali</a>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -49,18 +49,24 @@
                 </form>
             </div>
                     
-
-            <div class="card card-primary">
-                <div class="card-body row">
-                    <h5 class="card-title"></h5>
-                    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                </div>
-                <div class="card-body row">
-                    <div class="ml-5">
-                        <h5 class="card-title">komentar!</h5>
+            @forelse($answer as $key => $answer)
+                <div class="card card-primary">
+                    <div class="card-body row">
+                        <h5 class="card-title">{{ $answer->isi }}</h5>
+                        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                    <div class="card-body row">
+                        <div class="ml-5">
+                            <h5 class="card-title">komentar!</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
+                @empty
+                    	 <tr>
+                    	 	<td colspan="4" align="center">Tidak ada Komentar</td>
+                    	 </tr>
+            @endforelse
+            
         </div>
 @endsection
