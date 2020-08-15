@@ -2,12 +2,15 @@
 
 @section('content')
         <div class="pt-4 pl-4 pr-4">
+            <div class="btn btn-primary btn-sm mb-2 btnBack">
+                <a href="{{ route('pertanyaan.index') }}" class="btn btn-card-tool">Kembali</a>
+            </div>
             <div class="card card-primary">
                 <div class="card-header with-border">
                     <h3 class="card-title">Pertanyaan</h3>
-
                     <div class="card-tools pull-right">
-                        <a href="{{ route('pertanyaan.index') }}" class="btn btn-card-tool">Kembali</a>
+                        <button class="btn btn-primary btn-sm">Up Vote</button>
+                        <button class="btn btn-primary btn-sm">Down Vote</button>
                     </div>
                 </div>
                 <!-- /.card-header -->
