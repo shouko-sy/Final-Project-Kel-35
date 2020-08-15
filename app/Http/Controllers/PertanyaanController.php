@@ -75,6 +75,8 @@ class PertanyaanController extends Controller
         $question = Question::find($pertanyaan_id);
         $question->delete();
 
+        $
+
         return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
     }
 }
