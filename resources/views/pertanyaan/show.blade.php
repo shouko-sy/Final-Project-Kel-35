@@ -33,9 +33,34 @@
                     <!-- /.mailbox-read-message -->
                 </div>
             </div>
-            <div class="card card-primary">
-                
-            </div>
 
+            <div class="card card-primary">
+                <form role="form" action="/pertanyaan/{{$question->id}}" method="POST">
+                @csrf
+                    <div class="form-group m-2">
+                        <textarea  class="form-control" name="jawaban" rows="2" cols="50" placeholder="masukan jawaban anda ..."></textarea>
+                        <!-- @error("")
+                            <div class="alert alert-danger"> {{$message}} </div>
+                        @enderror -->
+                    </div>
+                    <div class="form-group m-2">
+                        <button type="submit" class="btn btn-primary">Tambah Jawaban</button>
+                    </div>
+                </form>
+            </div>
+                    
+
+            <div class="card card-primary">
+                <div class="card-body row">
+                    <h5 class="card-title"></h5>
+                    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+                <div class="card-body row">
+                    <div class="ml-5">
+                        <h5 class="card-title">komentar!</h5>
+                    </div>
+                </div>
+            </div>
         </div>
 @endsection

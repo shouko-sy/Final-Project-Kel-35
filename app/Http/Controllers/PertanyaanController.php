@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Tag; 
 use App\Question_tag;  
+use App\Answer;
 use Auth;
-use DB;
+
 
 class PertanyaanController extends Controller
 {
@@ -22,7 +23,7 @@ class PertanyaanController extends Controller
     		"judul" => 'required|unique:questions',
     		"isi" => 'required'
     	]);
-
+        // dd($request);
         $tags_arr = explode(',', $request["tags"]);
 
         $tags_ids = [];
