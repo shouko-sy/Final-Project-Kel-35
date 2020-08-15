@@ -7,6 +7,7 @@ use App\Question;
 use App\Tag; 
 use App\Question_tag;  
 use App\Answer;
+use App\Question_comment;
 use Auth;
 
 
@@ -49,8 +50,9 @@ class PertanyaanController extends Controller
     public function show($pertanyaan_id){
         $question = Question::find($pertanyaan_id);
         $answer = Answer::all()->where('question_id', $pertanyaan_id);
+        $komentar = Question_comment::all()->where('question_id', $pertanyaan_id);
         // dd($answer);
-    	return view('pertanyaan.show', compact('question', 'answer'));
+    	return view('pertanyaan.show', compact('question', 'answer', 'komentar'));
     }
     public function edit($pertanyaan_id){
         //mengedit data tertentu menggunakan model
@@ -87,6 +89,7 @@ class PertanyaanController extends Controller
         // menghapus data tertentu menggunakan model
         $question = Question::find($pertanyaan_id);
         $question->delete();
+       
         return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
     }
 }

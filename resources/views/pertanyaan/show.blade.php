@@ -34,6 +34,36 @@
                         <h4>{{ $question->isi }}</h4>
                     </div>
                     <!-- /.mailbox-read-message -->
+                    <div class="card-body ml-5 mt-5">
+                        <table class="table table-bordered">
+                        <tbody>
+                        @forelse($komentar as $key => $komentar)
+                            <tr>
+                                <td> 
+                                    {{$komentar->isi}} <br> 
+                                    <h9 class="float-right"> dikomentar oleh : {{ $question->namaUser->name }} <br> </h9>
+                                </td>
+                            </tr>
+                            @empty
+                             <tr>
+                                <td colspan="4" align="center">No Comment</td>
+                             </tr>
+                        @endforelse
+                        </tbody>
+                        </table>
+                    </div>
+                    <form action="/pertanyaan/{{$question->id}}" method="POST">
+                        @csrf
+                        <div class="form-group mt-3 ml-5">
+                            <textarea  class="form-control" id="komentar" name="komentar" rows="2" cols="50" placeholder="masukan komentar anda ...">{{{old('komentar', '')}}}</textarea>
+                            @error("komentar")
+                                <div class="alert alert-danger"> {{$message}} </div>
+                            @enderror
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary float-right">Tambah Komentar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

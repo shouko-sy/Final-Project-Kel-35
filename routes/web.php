@@ -20,4 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profil','ProfilController@showProfil')->name('profil');
+
+Route::post('/pertanyaan/{pertanyaan}', 'KomentarController@addComment');
 Route::post('/pertanyaan/{question_id}', 'JawabanController@addAnswer')->name('tambah.jawaban');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use App\Question_comment;
 use Auth;
 
 class JawabanController extends Controller
@@ -19,9 +20,10 @@ class JawabanController extends Controller
         ]);
         
         $answer = Answer::all()->where('question_id', $pertanyaan_id);
+        $komentar = Question_comment::all()->where("question_id", $pertanyaan_id);
         // dd($answer);
 
-        return view('pertanyaan.show', compact('question', 'answer'));
+        return view('pertanyaan.show', compact('question', 'answer', 'komentar'));
         // return redirect('/pertanyaan/{{$question->id}}')->with('success', 'Question Saved!');
         // return app('App\Http\Controllers\PertanyaanController')->show($pertanyaan_id);
     }
