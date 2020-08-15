@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Tag; 
-use App\Question_tag;  
+use App\Question_tag;
 use Auth;
 use DB;
 
@@ -85,9 +85,6 @@ class PertanyaanController extends Controller
         $question = Question::find($pertanyaan_id);
         $question->delete();
        
-
-        $
-
         return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
     }
 }
