@@ -8,6 +8,7 @@ use App\Tag;
 use App\Question_tag;  
 use App\Answer;
 use App\Question_comment;
+use App\Answer_comment;
 use Auth;
 
 
@@ -51,8 +52,9 @@ class PertanyaanController extends Controller
         $question = Question::find($pertanyaan_id);
         $answer = Answer::all()->where('question_id', $pertanyaan_id);
         $komentar = Question_comment::all()->where('question_id', $pertanyaan_id);
+        $komentarjwb = Answer_comment::all()->where('question_id', $pertanyaan_id);
         // dd($answer);
-    	return view('pertanyaan.show', compact('question', 'answer', 'komentar'));
+    	return view('pertanyaan.show', compact('question', 'answer', 'komentar', 'komentarjwb'));
     }
     public function edit($pertanyaan_id){
         //mengedit data tertentu menggunakan model

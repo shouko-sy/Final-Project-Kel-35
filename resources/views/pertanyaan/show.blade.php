@@ -38,7 +38,7 @@
                             <tr>
                                 <td> 
                                     {{$komentar->isi}} <br> 
-                                    <h9 class="float-right"> dikomentar oleh : {{ $question->namaUser->name }} <br> </h9>
+                                    <h9 class="float-right"> dikomentari oleh : {{ $question->namaUser->name }} <br> </h9>
                                 </td>
                             </tr>
                             @empty
@@ -49,7 +49,7 @@
                         </tbody>
                         </table>
                     </div>
-                    <form action="/pertanyaan/{{$question->id}}" method="POST">
+                    <form action="/pertanyaan/{{$question->id}}/komentar" method="POST">
                         @csrf
                         <div class="form-group mt-3 ml-5">
                             <textarea  class="form-control" id="komentar" name="komentar" rows="2" cols="50" placeholder="masukan komentar anda ...">{{{old('komentar', '')}}}</textarea>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="card card-primary">
-                <form role="form" action="/pertanyaan/{{$question->id}}" method="POST">
+                <form role="form" action="/pertanyaan/{{$question->id}}/jawaban" method="POST">
                 @csrf
                     <div class="form-group m-2">
                         <textarea  class="form-control" name="jawaban" rows="2" cols="50" placeholder="masukan jawaban anda ..."></textarea>
@@ -86,16 +86,43 @@
                         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
-                    <div class="card-body row">
-                        <div class="ml-5">
-                            <h5 class="card-title">komentar!</h5>
-                        </div>
+                    <div class="card-body ml-5 mt-5">
+                        <table class="table table-bordered">
+                        <tbody>
+                        @forelse($komentar as $key => $komentar)
+                            <tr>
+                                <td> 
+                                    {{$komentar->isi}} <br> 
+                                    <h9 class="float-right"> dikomentari oleh : {{ $question->namaUser->name }} <br> </h9>
+                                </td>
+                            </tr>
+                            @empty
+                             <tr>
+                                <td colspan="4" align="center">No Comment</td>
+                             </tr>
+                        @endforelse
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="ml-5 mr-5">
+                        <form action="/pertanyaan/{{$question->id, $answer->id}}/komentar" method="POST">
+                        @csrf
+                            <div class="form-group mt-3">
+                                <textarea  class="form-control" id="komentar" name="komentar" rows="2" cols="50" placeholder="masukan komentar anda ...">{{{old('komentar', '')}}}</textarea>
+                                @error("komentar")
+                                    <div class="alert alert-danger"> {{$message}} </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary float-right mb-3">Tambah Komentar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 @empty
-                    	 <tr>
-                    	 	<td colspan="4" align="center">Tidak ada Komentar</td>
-                    	 </tr>
+                    <tr>
+                    	<td colspan="4" align="center">Tidak ada Komentar</td>
+                    </tr>
             @endforelse
             
         </div>

@@ -15,7 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('isi');
+            $table->string('isi')->nullable();
             $table->timestamps();
         });
     }
