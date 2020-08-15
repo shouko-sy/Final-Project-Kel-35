@@ -37,7 +37,7 @@
 	            </div>
 	            </div>
 				<!-- /.card-body -->
-				<div class="card-footer">
+				<div class="float-right">
 					<button type="submit" class="btn btn-primary">Pebarui</button>
 				</div>
 			</form>
