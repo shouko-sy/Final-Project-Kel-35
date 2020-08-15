@@ -85,10 +85,6 @@ class PertanyaanController extends Controller
         // menghapus data tertentu menggunakan model
         $question = Question::find($pertanyaan_id);
         $question->delete();
-       
-
-        $
-
         return redirect('/pertanyaan')->with('success', 'Delete Question Success!');
     }
 }
