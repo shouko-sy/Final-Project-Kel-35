@@ -90,16 +90,11 @@
                         <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
-                    <div class="card-body row">
-                        <div class="ml-5">
-                            <h5 class="card-title">komentar!</h5>
-                        </div>
-                    </div>
                 </div>
                 @empty
-                    	 <tr>
-                    	 	<td colspan="4" align="center">Tidak ada Komentar</td>
-                    	 </tr>
+                    <tr>
+                    	<td colspan="4" align="center">Tidak ada Komentar</td>
+                    </tr>
             @endforelse
             
         </div>
